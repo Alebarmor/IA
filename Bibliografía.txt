@@ -1,0 +1,17 @@
+Importación:
+	https://stackoverflow.com/questions/29068957/cant-import-python-class
+
+Meter ficher en lista:
+	https://stackoverflow.com/questions/3925614/how-do-you-read-a-file-into-a-list-in-python
+
+Borrar un caracter de un string:
+	https://www.journaldev.com/23674/python-remove-character-from-string#:~:text=Python%20Remove%20Character%20from%20String%20using%20replace(),get%20removed%20from%20the%20string.
+
+Conseguir valores de un string (x,y) -> x & y:
+	https://stackoverflow.com/questions/26098503/get-first-2-values-in-a-comma-separated-string
+
+Raiz cuadrada (la de ** 1/2 no da valores correctos):
+	https://realpython.com/python-square-root-function/
+
+Tamaño lista:
+	http://elclubdelautodidacta.es/wp/2011/08/python-capitulo-14-el-total-de-elementos-de-una-lista/
