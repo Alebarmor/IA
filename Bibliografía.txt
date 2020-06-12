@@ -24,3 +24,9 @@ Int to Str:
 
 Diccionarios:
 	https://uniwebsidad.com/libros/algoritmos-python/capitulo-9/utilizando-diccionarios-en-python
+
+Redondeo:
+	https://micro.recursospython.com/recursos/como-redondear-un-numero-decimal.html
+
+Representación lista:
+	https://stackoverflow.com/questions/12933964/printing-a-list-of-objects-of-user-defined-class

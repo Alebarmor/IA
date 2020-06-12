@@ -69,6 +69,10 @@ class Circulo(Punto):
             centro = Punto(self.x, self.y)
             d = p.distancia_punto_punto(centro)
             return d < self.radio
+        
+        def grado_pertenencia(self, p):
+            d = self.distancia_circulo_punto(p)
+            return round(1/((d**2)+1), 5)
 
 #Obtener lista PUNTOS de un TXT        
 def lista_puntos(str):
@@ -95,3 +99,19 @@ def lista_distancias(l, c):
         res.append(d)
         i += 1
     return res
+
+#Diccionario {C: Grados}
+def mapa_grados(p, c):
+    i = 0
+    np = len(p)
+    nc = len(c)
+    clusters = {}
+    while i < nc:
+        j = 0
+        grados = []
+        while j < np:
+            grados.append(c[i].grado_pertenencia(p[j]))
+            j += 1
+        clusters["c" + str(i)] = grados
+        i += 1
+    return clusters
