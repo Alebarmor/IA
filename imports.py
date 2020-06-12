@@ -21,6 +21,9 @@ class Punto(object):
             ys = (p.y - self.y)**2
             sum = xs + ys
             return math.sqrt(sum)
+        
+        def __repr__(self):
+            return str(self)
             
 
 #STR to PUNTO        
@@ -28,8 +31,8 @@ def point(str):
     str = str.replace("(", "")
     str = str.replace(")", "")
     s = str.split(",")
-    x = s[0]
-    y = s[1]
+    x = int(s[0])
+    y = int(s[1])
     return Punto(x,y)
 
 #Clase CIRCULO
@@ -59,8 +62,11 @@ class Circulo(Punto):
             p = Punto(self.x,self.y)
             d = p.distancia_punto_punto(t)    
             return abs(d - self.radio)
+        
+        def __repr__(self):
+            return str(self)
 
-#Obtener PUNTOS de un TXT        
+#Obtener lista PUNTOS de un TXT        
 def lista_puntos(str):
     puntos = open(str, "r")
     with puntos as p:
@@ -69,7 +75,19 @@ def lista_puntos(str):
     n = len(lines)
     lista_puntos = []
     while i < n:
-        punto = lines[i]
+        p = lines[i]
+        punto = point(p)
         lista_puntos.append(punto)
         i += 1
     return lista_puntos
+
+#Obetener lista distancias
+def lista_distancias(l, c):
+    i = 0
+    n = len(l)
+    res = []
+    while i < n:
+        d = c.distancia_circulo_punto(l[i])
+        res.append(d)
+        i += 1
+    return res

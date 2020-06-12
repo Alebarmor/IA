@@ -15,3 +15,12 @@ Raiz cuadrada (la de ** 1/2 no da valores correctos):
 
 Tamaño lista:
 	http://elclubdelautodidacta.es/wp/2011/08/python-capitulo-14-el-total-de-elementos-de-una-lista/
+
+Str to Int:
+	https://realpython.com/convert-python-string-to-int/
+
+Int to Str:
+	https://stackoverflow.com/questions/961632/converting-integer-to-string
+
+Diccionarios:
+	https://uniwebsidad.com/libros/algoritmos-python/capitulo-9/utilizando-diccionarios-en-python
