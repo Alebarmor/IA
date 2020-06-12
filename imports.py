@@ -24,8 +24,7 @@ class Punto(object):
         
         def __repr__(self):
             return str(self)
-            
-
+        
 #STR to PUNTO        
 def point(str):
     str = str.replace("(", "")
@@ -65,6 +64,11 @@ class Circulo(Punto):
         
         def __repr__(self):
             return str(self)
+        
+        def dentro(self, p):
+            centro = Punto(self.x, self.y)
+            d = p.distancia_punto_punto(centro)
+            return d < self.radio
 
 #Obtener lista PUNTOS de un TXT        
 def lista_puntos(str):
