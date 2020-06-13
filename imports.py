@@ -1,4 +1,5 @@
 import math
+import random
 
 #Clase PUNTO
 class Punto(object):
@@ -24,15 +25,6 @@ class Punto(object):
         
         def __repr__(self):
             return str(self)
-        
-#STR to PUNTO        
-def point(str):
-    str = str.replace("(", "")
-    str = str.replace(")", "")
-    s = str.split(",")
-    x = int(s[0])
-    y = int(s[1])
-    return Punto(x,y)
 
 #Clase CIRCULO
 class Circulo(Punto):
@@ -74,21 +66,6 @@ class Circulo(Punto):
             d = self.distancia_circulo_punto(p)
             return round(1/((d**2)+1), 5)
 
-#Obtener lista PUNTOS de un TXT        
-def lista_puntos(str):
-    puntos = open(str, "r")
-    with puntos as p:
-        lines = p.read().splitlines()
-    i = 0
-    n = len(lines)
-    lista_puntos = []
-    while i < n:
-        p = lines[i]
-        punto = point(p)
-        lista_puntos.append(punto)
-        i += 1
-    return lista_puntos
-
 #Obetener lista distancias
 def lista_distancias(l, c):
     i = 0
@@ -115,3 +92,33 @@ def mapa_grados(p, c):
         clusters["c" + str(i)] = grados
         i += 1
     return clusters
+
+#Obetener lista de puntos en base a un archivo txt
+def lista_puntos(str):
+    puntos = open(str, "r")
+    p = puntos.read()
+    p = p.replace("[", "")
+    p = p.replace("]", "")
+    p = p.replace("(", "")
+    p = p.replace(")", "")
+    p = p.replace(" ", "")
+    ps = p.split(",")
+    i = 0
+    n = len(ps)
+    lista_puntos = []
+    while i < n:
+        x = float(ps[i])
+        i += 1
+        y = float(ps[i])
+        punto = Punto(x, y)
+        lista_puntos.append(punto)
+        i += 1
+    return lista_puntos
+
+def circulo_aleatorio(r):
+    x = random.randint(0, 20)
+    y = random.randint(0, 20)
+    return Circulo(r, x, y)
+
+def clustering_algorithm(c):
+    i = 0
