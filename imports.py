@@ -1,4 +1,5 @@
 import math
+import random
 
 #Clase PUNTO
 class Punto(object):
@@ -24,7 +25,8 @@ class Punto(object):
         
         def __repr__(self):
             return str(self)
-        
+            
+
 #STR to PUNTO        
 def point(str):
     str = str.replace("(", "")
@@ -64,15 +66,6 @@ class Circulo(Punto):
         
         def __repr__(self):
             return str(self)
-        
-        def dentro(self, p):
-            centro = Punto(self.x, self.y)
-            d = p.distancia_punto_punto(centro)
-            return d < self.radio
-        
-        def grado_pertenencia(self, p):
-            d = self.distancia_circulo_punto(p)
-            return round(1/((d**2)+1), 5)
 
 #Obtener lista PUNTOS de un TXT        
 def lista_puntos(str):
@@ -100,18 +93,38 @@ def lista_distancias(l, c):
         i += 1
     return res
 
-#Diccionario {C: Grados}
-def mapa_grados(p, c):
-    i = 0
-    np = len(p)
-    nc = len(c)
-    clusters = {}
-    while i < nc:
-        j = 0
-        grados = []
-        while j < np:
-            grados.append(c[i].grado_pertenencia(p[j]))
-            j += 1
-        clusters["c" + str(i)] = grados
-        i += 1
-    return clusters
+
+#metodo que dado una lista de puntos devuelva una lista de posibles circulos(a especificar)
+# p = lista de puntos, c=numero de circulos, r=radio maximo
+def posibles_centros_aleatorios(p, c, r):
+    i=0
+    l=lado_cuadrado(p)
+    maximo=l[0]
+    minimo=l[1]
+    res=[]
+    
+    while i<c:
+       x=random.randint( minimo,  maximo)   
+       y=random.randint( minimo,  maximo)
+       radio=random.randint(1,r)
+       circulo=Circulo(radio, x, y)
+       res.append(circulo)
+       i += 1
+       
+    return res
+
+
+#metodo para calcular los valores minimo y maximo(p=lista de puntos)
+def lado_cuadrado(p):
+    maximo=120
+    minimo=120
+    
+    for e in p:
+        if e.y > maximo or maximo==120: maximo=e.y
+        if e.x > maximo: maximo=e.x
+        if e.y < minimo or minimo==120: minimo=e.y
+        if e.x < minimo: minimo=e.x
+        
+    lista = [maximo, minimo]
+        
+    return lista
